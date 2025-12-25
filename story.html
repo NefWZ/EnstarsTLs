@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Detail</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 id="story-title">Story Title</h1>
+<div id="story-meta"></div>
+
+<div id="chapter-list"></div>
+
+<div style="text-align:center; margin-top:20px;">
+  <a href="index.html">Back to Timeline</a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+const storiesData = {
+  story1: {
+    title:'Main Story Chapter 1',
+    category:'Main',
+    date:'2025-01-01',
+    characters:['char1','char2'],
+    events:[
+      {title:'Chapter 1: Beginning', text:'Translation for chapter 1', img:'https://via.placeholder.com/400x200'},
+      {title:'Chapter 2: Middle', text:'Translation for chapter 2'}
+    ]
+  },
+  story2: {
+    title:'Valentine Event',
+    category:'Event',
+    date:'2025-02-14',
+    characters:['char2','char3'],
+    events:[
+      {title:'Scene 1', text:'Valentine story translation.'},
+      {title:'Scene 2', text:'Second scene with image.', img:'https://via.placeholder.com/400x200'}
+    ]
+  },
+  story3: {
+    title:'Scout Story: Training',
+    category:'Scout',
+    date:'2025-03-05',
+    characters:['char1'],
+    events:[
+      {title:'Scene 1', text:'Scout story translation.'}
+    ]
+  },
+  story4: {
+    title:'Unit Story: Tricksters',
+    category:'Unit',
+    date:'2025-04-10',
+    characters:['char3','char2'],
+    events:[
+      {title:'Scene 1', text:'Unit story translation.'}
+    ]
+  }
+};
+
+const characterData = {
+  'char1':{name:'Character 1', img:'https://via.placeholder.com/50'},
+  'char2':{name:'Character 2', img:'https://via.placeholder.com/50'},
+  'char3':{name:'Character 3', img:'https://via.placeholder.com/50'}
+};
+
+// Get story slug from URL
+const urlParams = new URLSearchParams(window.location.search);
+const slug = urlParams.get('slug');
+const story = storiesData[slug];
+
+if(story){
+  document.getElementById('story-title').textContent = story.title;
+  const metaDiv = document.getElementById('story-meta');
+  let charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
+  metaDiv.innerHTML = `${story.category} | ${story.date} | ${charIcons}`;
+
+  const chapterList = document.getElementById('chapter-list');
+  story.events.forEach((chapter,i)=>{
+    const chapterDiv = document.createElement('div');
+    chapterDiv.style.marginBottom = '20px';
+    chapterDiv.innerHTML = `
+      <h3>${chapter.title}</h3>
+      <p>${chapter.text}</p>
+      ${chapter.img?`<img src="${chapter.img}" style="max-width:100%; border-radius:8px;">`:''}
+    `;
+    chapterList.appendChild(chapterDiv);
+  });
+} else {
+  document.getElementById('story-title').textContent = 'Story not found';
+}
+});
+</script>
+
+</body>
+</html>
