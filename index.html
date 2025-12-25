@@ -10,7 +10,7 @@
 
 <h1>Enstars Story Timeline</h1>
 
-<!-- Category Tabs -->
+<!-- Tabs -->
 <div class="tabs" id="category-tabs">
   <div class="tab active" data-category="All">All Stories</div>
   <div class="tab" data-category="Main">Main Story</div>
@@ -71,7 +71,6 @@ function renderTimeline(category='All', searchText='', sortBy='release'){
     const card = document.createElement('div');
     card.className='story-card ' + (index%2===0?'story-left':'story-right');
 
-    // Character icons
     let charIcons = '';
     if(story.characters){
       charIcons = story.characters.map(c => `<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
@@ -80,14 +79,14 @@ function renderTimeline(category='All', searchText='', sortBy='release'){
     card.innerHTML = `
       <div class="story-title">${story.title}</div>
       <div class="story-meta">${story.category} | ${story.date} | ${charIcons}</div>
-      <div style="margin-top:5px;"><a href="story.html?slug=${story.slug}">View Story</a></div>
+      <div style="margin-top:5px;"><a href="pages/story.html?slug=${story.slug}">View Story</a></div>
     `;
 
     timeline.appendChild(card);
   });
 }
 
-// Tab switching
+// Tabs
 tabs.forEach(tab=>{
   tab.addEventListener('click',()=>{
     tabs.forEach(t=>t.classList.remove('active'));
@@ -96,13 +95,13 @@ tabs.forEach(tab=>{
   });
 });
 
-// Search filter
+// Search
 searchInput.addEventListener('input',()=>{
   const activeCategory = document.querySelector('.tab.active').dataset.category;
   renderTimeline(activeCategory, searchInput.value, sortSelect.value);
 });
 
-// Sort change
+// Sort
 sortSelect.addEventListener('change',()=>{
   const activeCategory = document.querySelector('.tab.active').dataset.category;
   renderTimeline(activeCategory, searchInput.value, sortSelect.value);
