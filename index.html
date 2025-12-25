@@ -36,76 +36,86 @@
 <div class="timeline" id="timeline"></div>
 
 <script>
-const sortSelect = document.getElementById('sort');
+document.addEventListener('DOMContentLoaded', () => {
+  const timeline = document.getElementById('timeline');
+  const tabs = document.querySelectorAll('.tab');
+  const searchInput = document.getElementById('search');
+  const sortSelect = document.getElementById('sort');
 
-function renderTimeline(category='All', searchText='', sortBy='release'){
-  timeline.innerHTML='';
-  let filtered = stories.filter(s => (category==='All'||s.category===category) && s.title.toLowerCase().includes(searchText.toLowerCase()));
+  function renderTimeline(category = 'All', searchText = '', sortBy = 'release') {
+    timeline.innerHTML = '';
+    let filtered = stories.filter(s => 
+      (category === 'All' || s.category === category) &&
+      s.title.toLowerCase().includes(searchText.toLowerCase())
+    );
 
-  // Sorting
-  if(sortBy==='chronological'){
-    filtered.sort((a,b)=> new Date(a.date)-new Date(b.date));
-  } else {
-    filtered.sort((a,b)=> a.id.localeCompare(b.id)); // Assuming id roughly follows release order
-  }
-
-  filtered.forEach((story,index)=>{
-    const card=document.createElement('div');
-    card.className='story-card '+(index%2===0?'story-left':'story-right');
-
-    // Character icons
-    let charIcons='';
-    if(story.characters){
-      charIcons=story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
+    // Sorting
+    if(sortBy === 'chronological'){
+      filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+    } else {
+      filtered.sort((a, b) => a.id.localeCompare(b.id)); // assuming id reflects release order
     }
 
-    // Scene list
-    const scenesHTML=story.events.map((ev,i)=>`
-      <div class="scene-title" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
-        ${ev.title}
-      </div>
-      <div class="scene-content">
-        <div>${ev.text}</div>
-        ${ev.img?`<img src="${ev.img}">`:''}
-      </div>
-    `).join('');
+    filtered.forEach((story, index) => {
+      const card = document.createElement('div');
+      card.className = 'story-card ' + (index % 2 === 0 ? 'story-left' : 'story-right');
 
-    card.innerHTML=`
-      <div class="story-title">${story.title}</div>
-      <div class="story-meta">${story.category} | ${story.date} | ${charIcons}</div>
-      <div class="scene-list">${scenesHTML}</div>
-    `;
-    card.addEventListener('click',()=>{ 
-      const list=card.querySelector('.scene-list');
-      list.style.display=list.style.display==='block'?'none':'block';
+      // Character icons
+      let charIcons = '';
+      if(story.characters){
+        charIcons = story.characters.map(c => `<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
+      }
+
+      // Scene list
+      const scenesHTML = story.events.map(ev => `
+        <div class="scene-title" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
+          ${ev.title}
+        </div>
+        <div class="scene-content">
+          <div>${ev.text}</div>
+          ${ev.img ? `<img src="${ev.img}">` : ''}
+        </div>
+      `).join('');
+
+      card.innerHTML = `
+        <div class="story-title">${story.title}</div>
+        <div class="story-meta">${story.category} | ${story.date} | ${charIcons}</div>
+        <div class="scene-list">${scenesHTML}</div>
+      `;
+
+      card.addEventListener('click', () => { 
+        const list = card.querySelector('.scene-list');
+        list.style.display = list.style.display === 'block' ? 'none' : 'block';
+      });
+
+      timeline.appendChild(card);
     });
-    timeline.appendChild(card);
+  }
+
+  // Tab switching
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderTimeline(tab.dataset.category, searchInput.value, sortSelect.value);
+    });
   });
-}
 
-// Tab switching
-tabs.forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    tabs.forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    renderTimeline(tab.dataset.category, searchInput.value, sortSelect.value);
+  // Search filter
+  searchInput.addEventListener('input', () => {
+    const activeCategory = document.querySelector('.tab.active').dataset.category;
+    renderTimeline(activeCategory, searchInput.value, sortSelect.value);
   });
-});
 
-// Search filter
-searchInput.addEventListener('input',()=>{
-  const activeCategory=document.querySelector('.tab.active').dataset.category;
-  renderTimeline(activeCategory, searchInput.value, sortSelect.value);
-});
+  // Sort change
+  sortSelect.addEventListener('change', () => {
+    const activeCategory = document.querySelector('.tab.active').dataset.category;
+    renderTimeline(activeCategory, searchInput.value, sortSelect.value);
+  });
 
-// Sort change
-sortSelect.addEventListener('change',()=>{
-  const activeCategory=document.querySelector('.tab.active').dataset.category;
-  renderTimeline(activeCategory, searchInput.value, sortSelect.value);
+  // Initial render
+  renderTimeline('All', '', sortSelect.value || 'release');
 });
-
-// Initial render
-renderTimeline('All', '', sortSelect.value);
 
 </script>
 
