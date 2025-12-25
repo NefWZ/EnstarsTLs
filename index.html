@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Enstars Stories (Release Order)</h1>
+<h1>Enstars Story Timeline</h1>
 
 <!-- Category Tabs -->
 <div class="tabs" id="category-tabs">
@@ -18,8 +18,9 @@
   <div class="tab" data-category="Scout">Scout Story</div>
   <div class="tab" data-category="Unit">Unit Story</div>
 </div>
-<!-- Toggle -->
-<div class="sort-container" style="text-align:center; margin-bottom:15px;">
+
+<!-- Sort dropdown -->
+<div class="sort-container">
   <label for="sort">Sort by: </label>
   <select id="sort">
     <option value="release">Release Order</option>
@@ -36,8 +37,9 @@
 <div class="timeline" id="timeline"></div>
 
 <script>
-   //Stories
-    const stories = [
+document.addEventListener('DOMContentLoaded', () => {
+
+const stories = [
   {
     id:'s1',
     title:'Main Story Chapter 1',
@@ -51,119 +53,4 @@
   },
   {
     id:'s2',
-    title:'Valentine Event',
-    category:'Event',
-    date:'2025-02-14',
-    characters:['char2','char3'],
-    events:[
-      {title:'Scene 1', text:'Valentine story translation.'},
-      {title:'Scene 2', text:'Second scene with image.', img:'https://via.placeholder.com/400x200'}
-    ]
-  },
-  {
-    id:'s3',
-    title:'Scout Story: Training',
-    category:'Scout',
-    date:'2025-03-05',
-    characters:['char1'],
-    events:[
-      {title:'Scene 1', text:'Scout story translation.'}
-    ]
-  },
-  {
-    id:'s4',
-    title:'Unit Story: Tricksters',
-    category:'Unit',
-    date:'2025-04-10',
-    characters:['char3','char2'],
-    events:[
-      {title:'Scene 1', text:'Unit story translation.'}
-    ]
-  }
-];
-//Timeline Bullshit
-document.addEventListener('DOMContentLoaded', () => {
-  const timeline = document.getElementById('timeline');
-  const tabs = document.querySelectorAll('.tab');
-  const searchInput = document.getElementById('search');
-  const sortSelect = document.getElementById('sort');
-
-  function renderTimeline(category = 'All', searchText = '', sortBy = 'release') {
-    timeline.innerHTML = '';
-    let filtered = stories.filter(s => 
-      (category === 'All' || s.category === category) &&
-      s.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-   
-    // Sorting
-    if(sortBy === 'chronological'){
-      filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
-    } else {
-      filtered.sort((a, b) => a.id.localeCompare(b.id)); // assuming id reflects release order
-    }
-
-    filtered.forEach((story, index) => {
-      const card = document.createElement('div');
-      card.className = 'story-card ' + (index % 2 === 0 ? 'story-left' : 'story-right');
-
-      // Character icons
-      let charIcons = '';
-      if(story.characters){
-        charIcons = story.characters.map(c => `<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
-      }
-
-      // Scene list
-      const scenesHTML = story.events.map(ev => `
-        <div class="scene-title" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
-          ${ev.title}
-        </div>
-        <div class="scene-content">
-          <div>${ev.text}</div>
-          ${ev.img ? `<img src="${ev.img}">` : ''}
-        </div>
-      `).join('');
-
-      card.innerHTML = `
-        <div class="story-title">${story.title}</div>
-        <div class="story-meta">${story.category} | ${story.date} | ${charIcons}</div>
-        <div class="scene-list">${scenesHTML}</div>
-      `;
-
-      card.addEventListener('click', () => { 
-        const list = card.querySelector('.scene-list');
-        list.style.display = list.style.display === 'block' ? 'none' : 'block';
-      });
-
-      timeline.appendChild(card);
-    });
-  }
-
-  // Tab switching
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      renderTimeline(tab.dataset.category, searchInput.value, sortSelect.value);
-    });
-  });
-
-  // Search filter
-  searchInput.addEventListener('input', () => {
-    const activeCategory = document.querySelector('.tab.active').dataset.category;
-    renderTimeline(activeCategory, searchInput.value, sortSelect.value);
-  });
-
-  // Sort change
-  sortSelect.addEventListener('change', () => {
-    const activeCategory = document.querySelector('.tab.active').dataset.category;
-    renderTimeline(activeCategory, searchInput.value, sortSelect.value);
-  });
-
-  // Initial render
-  renderTimeline('All', '', sortSelect.value || 'release');
-});
-
-</script>
-
-</body>
-</html>
+    title:'Valentine Even
