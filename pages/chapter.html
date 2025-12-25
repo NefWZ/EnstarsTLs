@@ -21,33 +21,60 @@
 </p>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+// ===== Story & Character Data =====
 const storiesData = {
   story1: {
-    title:'Main Story Chapter 1', category:'Main', date:'2025-01-01', author:'Author A', translator:'Translator X',
+    title:'Main Story Chapter 1',
+    category:'Main',
+    date:'2025-01-01',
+    author:'Author A',
+    translator:'Translator X',
     characters:['char1','char2'],
     events:[
-      {title:'Chapter 1: Beginning', text:'Translation for chapter 1', img:'https://via.placeholder.com/400x200'},
-      {title:'Chapter 2: Middle', text:'Translation for chapter 2'},
-      {title:'Chapter 3: Ending', text:'Translation for chapter 3'}
+      {
+        title:'Chapter 1: Beginning',
+        dialogue:[
+          {character:'char1', text:'Hey, are you ready for the festival?'},
+          {character:'char2', text:'Yeah! I can’t wait to see everyone there.'},
+          {character:null, text:'The sun shone brightly over the academy courtyard.'},
+          {character:'char1', text:'Let’s go then!'}
+        ]
+      },
+      {
+        title:'Chapter 2: Middle',
+        dialogue:[
+          {character:'char2', text:'This place is amazing!'},
+          {character:null, text:'Everyone was cheering as the festival began.'}
+        ]
+      }
     ]
   },
   story2: {
-    title:'Valentine Event', category:'Event', date:'2025-02-14', author:'Author B', translator:'Translator Y',
+    title:'Valentine Event',
+    category:'Event',
+    date:'2025-02-14',
+    author:'Author B',
+    translator:'Translator Y',
     characters:['char2','char3'],
     events:[
-      {title:'Scene 1', text:'Valentine story translation.'},
-      {title:'Scene 2', text:'Second scene with image.', img:'https://via.placeholder.com/400x200'}
+      {
+        title:'Scene 1',
+        dialogue:[
+          {character:'char2', text:'Happy Valentine’s Day!'},
+          {character:'char3', text:'Thanks! I brought chocolates for everyone.'}
+        ]
+      }
     ]
   }
 };
 
 const characterData = {
-  'char1':{name:'Character 1', img:'https://via.placeholder.com/50'},
-  'char2':{name:'Character 2', img:'https://via.placeholder.com/50'},
-  'char3':{name:'Character 3', img:'https://via.placeholder.com/50'}
+  char1:{name:'Character 1', unit:'Trickster', img:'https://via.placeholder.com/50'},
+  char2:{name:'Character 2', unit:'Scouting Team', img:'https://via.placeholder.com/50'},
+  char3:{name:'Character 3', unit:'Star Knights', img:'https://via.placeholder.com/50'}
 };
 
+// ===== Get URL Parameters =====
 const urlParams = new URLSearchParams(window.location.search);
 const storySlug = urlParams.get('story');
 let chapterIndex = parseInt(urlParams.get('chapter'));
@@ -55,32 +82,59 @@ const story = storiesData[storySlug];
 
 if(story && story.events[chapterIndex]){
   const chapter = story.events[chapterIndex];
+
+  // Chapter Title
   document.getElementById('chapter-title').textContent = chapter.title;
 
-  let charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
-  document.getElementById('chapter-meta').innerHTML = `${story.title} | ${story.category} | ${story.date} | ${charIcons}`;
-
-  document.getElementById('chapter-content').innerHTML = `
-    <p>${chapter.text}</p>
-    ${chapter.img?`<img src="${chapter.img}" style="max-width:100%; border-radius:8px;">`:''}
+  // Story Meta
+  const charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
+  document.getElementById('chapter-meta').innerHTML = `
+    ${story.title} | ${story.category} | ${story.date} | ${charIcons}
   `;
 
+  // Back to Story Overview
   document.getElementById('back-story').href = `story.html?slug=${storySlug}`;
 
+  // Chapter Content - Dialogue Rendering
+  const chapterContent = document.getElementById('chapter-content');
+  chapterContent.innerHTML = '';
+  chapter.dialogue.forEach(entry => {
+    const div = document.createElement('div');
+    div.className = entry.character ? 'dialogue-box' : 'narration-box';
+
+    if(entry.character){
+      const char = characterData[entry.character];
+      div.innerHTML = `
+        <div class="dialogue-character">
+          <img src="${char.img}" title="${char.name}">
+          <strong>${char.name}</strong>
+        </div>
+        <div class="dialogue-text">${entry.text}</div>
+      `;
+    } else {
+      div.textContent = entry.text;
+    }
+
+    chapterContent.appendChild(div);
+  });
+
+  // Next / Previous Buttons
   const prevBtn = document.getElementById('prev-chapter');
   const nextBtn = document.getElementById('next-chapter');
 
-  prevBtn.disabled = (chapterIndex===0);
-  nextBtn.disabled = (chapterIndex===story.events.length-1);
+  prevBtn.disabled = (chapterIndex === 0);
+  nextBtn.disabled = (chapterIndex === story.events.length - 1);
 
-  prevBtn.addEventListener('click', ()=> { if(chapterIndex>0) window.location.href = `chapter.html?story=${storySlug}&chapter=${chapterIndex-1}`; });
-  nextBtn.addEventListener('click', ()=> { if(chapterIndex<story.events.length-1) window.location.href = `chapter.html?story=${storySlug}&chapter=${chapterIndex+1}`; });
+  prevBtn.addEventListener('click', () => {
+    if(chapterIndex > 0) window.location.href = `chapter.html?story=${storySlug}&chapter=${chapterIndex - 1}`;
+  });
+  nextBtn.addEventListener('click', () => {
+    if(chapterIndex < story.events.length - 1) window.location.href = `chapter.html?story=${storySlug}&chapter=${chapterIndex + 1}`;
+  });
 
 } else {
   document.getElementById('chapter-title').textContent = 'Chapter not found';
 }
-});
 </script>
-
 </body>
 </html>
