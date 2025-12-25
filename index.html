@@ -36,19 +36,7 @@
 <div class="timeline" id="timeline"></div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const timeline = document.getElementById('timeline');
-  const tabs = document.querySelectorAll('.tab');
-  const searchInput = document.getElementById('search');
-  const sortSelect = document.getElementById('sort');
-
-  function renderTimeline(category = 'All', searchText = '', sortBy = 'release') {
-    timeline.innerHTML = '';
-    let filtered = stories.filter(s => 
-      (category === 'All' || s.category === category) &&
-      s.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-    //Stories
+   //Stories
     const stories = [
   {
     id:'s1',
@@ -93,7 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   }
 ];
+//Timeline Bullshit
+document.addEventListener('DOMContentLoaded', () => {
+  const timeline = document.getElementById('timeline');
+  const tabs = document.querySelectorAll('.tab');
+  const searchInput = document.getElementById('search');
+  const sortSelect = document.getElementById('sort');
 
+  function renderTimeline(category = 'All', searchText = '', sortBy = 'release') {
+    timeline.innerHTML = '';
+    let filtered = stories.filter(s => 
+      (category === 'All' || s.category === category) &&
+      s.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+   
     // Sorting
     if(sortBy === 'chronological'){
       filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
