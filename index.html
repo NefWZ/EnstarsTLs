@@ -117,12 +117,15 @@ const sortSelect = document.getElementById('sort');
 
 function renderTimeline(category='All', searchText='', sortBy='release'){
   timeline.innerHTML='';
-  let filtered = storiesData.filter(s => (category==='All'||s.category===category) &&
-                                      s.title.toLowerCase().includes(searchText.toLowerCase()));
+  let filtered = Object.keys(storiesData)
+    .map(slug => ({slug, ...storiesData[slug]}))
+    .filter(s => (category==='All'||s.category===category) &&
+                 s.title.toLowerCase().includes(searchText.toLowerCase()));
+
   if(sortBy==='chronological'){
     filtered.sort((a,b)=> new Date(a.date)-new Date(b.date));
   } else {
-    filtered.sort((a,b)=> a.id.localeCompare(b.id));
+    filtered.sort((a,b)=> a.slug.localeCompare(b.slug));
   }
 
   filtered.forEach((story,index)=>{
@@ -143,6 +146,7 @@ function renderTimeline(category='All', searchText='', sortBy='release'){
     timeline.appendChild(card);
   });
 }
+
 
 // Tabs
 tabs.forEach(tab=>{
