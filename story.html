@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Story Detail</title>
+<title>Story Overview</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 id="story-title">Story Title</h1>
+<h1 id="story-title"></h1>
 <div id="story-meta"></div>
+<p id="story-desc"></p>
 
-<div id="chapter-list"></div>
+<h2>Chapters</h2>
+<ul id="chapter-list"></ul>
 
 <div style="text-align:center; margin-top:20px;">
   <a href="index.html">Back to Timeline</a>
@@ -19,44 +21,32 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
 const storiesData = {
   story1: {
     title:'Main Story Chapter 1',
     category:'Main',
     date:'2025-01-01',
+    author:'Author A',
+    translator:'Translator X',
+    description:'This is the overview description of the Main Story.',
     characters:['char1','char2'],
     events:[
       {title:'Chapter 1: Beginning', text:'Translation for chapter 1', img:'https://via.placeholder.com/400x200'},
-      {title:'Chapter 2: Middle', text:'Translation for chapter 2'}
+      {title:'Chapter 2: Middle', text:'Translation for chapter 2'},
+      {title:'Chapter 3: Ending', text:'Translation for chapter 3'}
     ]
   },
   story2: {
     title:'Valentine Event',
     category:'Event',
     date:'2025-02-14',
+    author:'Author B',
+    translator:'Translator Y',
+    description:'Overview of Valentine Event.',
     characters:['char2','char3'],
     events:[
       {title:'Scene 1', text:'Valentine story translation.'},
       {title:'Scene 2', text:'Second scene with image.', img:'https://via.placeholder.com/400x200'}
-    ]
-  },
-  story3: {
-    title:'Scout Story: Training',
-    category:'Scout',
-    date:'2025-03-05',
-    characters:['char1'],
-    events:[
-      {title:'Scene 1', text:'Scout story translation.'}
-    ]
-  },
-  story4: {
-    title:'Unit Story: Tricksters',
-    category:'Unit',
-    date:'2025-04-10',
-    characters:['char3','char2'],
-    events:[
-      {title:'Scene 1', text:'Unit story translation.'}
     ]
   }
 };
@@ -74,26 +64,22 @@ const story = storiesData[slug];
 
 if(story){
   document.getElementById('story-title').textContent = story.title;
-  const metaDiv = document.getElementById('story-meta');
   let charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
-  metaDiv.innerHTML = `${story.category} | ${story.date} | ${charIcons}`;
+  document.getElementById('story-meta').innerHTML = `
+    ${story.category} | ${story.date} | Author: ${story.author} | Translator: ${story.translator} | ${charIcons}
+  `;
+  document.getElementById('story-desc').textContent = story.description;
 
   const chapterList = document.getElementById('chapter-list');
   story.events.forEach((chapter,i)=>{
-    const chapterDiv = document.createElement('div');
-    chapterDiv.style.marginBottom = '20px';
-    chapterDiv.innerHTML = `
-      <h3>${chapter.title}</h3>
-      <p>${chapter.text}</p>
-      ${chapter.img?`<img src="${chapter.img}" style="max-width:100%; border-radius:8px;">`:''}
-    `;
-    chapterList.appendChild(chapterDiv);
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="chapter.html?story=${slug}&chapter=${i}">${chapter.title}</a>`;
+    chapterList.appendChild(li);
   });
 } else {
   document.getElementById('story-title').textContent = 'Story not found';
 }
 });
 </script>
-
 </body>
 </html>
