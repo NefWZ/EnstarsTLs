@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter Page</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<h1 id="chapter-title"></h1>
+<div id="chapter-meta"></div>
+<div id="chapter-content"></div>
+
+<div style="text-align:center; margin-top:20px;">
+  <button id="prev-chapter">Previous Chapter</button>
+  <button id="next-chapter">Next Chapter</button>
+</div>
+<p style="text-align:center; margin-top:10px;">
+  <a id="back-story" href="">Back to Story Overview</a>
+</p>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const storiesData = {
+  story1: {
+    title:'Main Story Chapter 1', category:'Main', date:'2025-01-01', author:'Author A', translator:'Translator X',
+    characters:['char1','char2'],
+    events:[
+      {title:'Chapter 1: Beginning', text:'Translation for chapter 1', img:'https://via.placeholder.com/400x200'},
+      {title:'Chapter 2: Middle', text:'Translation for chapter 2'},
+      {title:'Chapter 3: Ending', text:'Translation for chapter 3'}
+    ]
+  },
+  story2: {
+    title:'Valentine Event', category:'Event', date:'2025-02-14', author:'Author B', translator:'Translator Y',
+    characters:['char2','char3'],
+    events:[
+      {title:'Scene 1', text:'Valentine story translation.'},
+      {title:'Scene 2', text:'Second scene with image.', img:'https://via.placeholder.com/400x200'}
+    ]
+  }
+};
+
+const characterData = {
+  'char1':{name:'Character 1', img:'https://via.placeholder.com/50'},
+  'char2':{name:'Character 2', img:'https://via.placeholder.com/50'},
+  'char3':{name:'Character 3', img:'https://via.placeholder.com/50'}
+};
+
+const urlParams = new URLSearchParams(window.location.search);
+const storySlug = urlParams.get('story');
+let chapterIndex = parseInt(urlParams.get('chapter'));
+const story = storiesData[storySlug];
+
+if(story && story.events[chapterIndex]){
+  const chapter = story.events[chapterIndex];
+  document.getElementById('chapter-title').textContent = chapter.title;
+
+  let charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
+  document.getElementById('chapter-meta').innerHTML = `${story.title} | ${story.category} | ${story.date} | ${charIcons}`;
+
+  document.getElementById('chapter-content').innerHTML = `
+    <p>${chapter.text}</p>
+    ${chapter.img?`<img src="${chapter.img}" style="max-width:100%; border-radius:8px;">`:''}
+  `;
+
+  document.getElementById('back-story').href = `story.html?slug=${storySlug}`;
+
+  const prevBtn = document.getElementById('prev-chapter');
+  const nextBtn = document.getElementById('next-chapter');
+
+  prevBtn.disabled = (chapterIndex===0);
+  nextBtn.disabled = (chapterIndex===story.events.length-1);
+
+  prevBtn.addEventListener('click', ()=> { if(chapterIndex>0) window.location.href = `chapter.html?story=${storySlug}&chapter=${chapterIndex-1}`; });
+  nextBtn.addEventListener('click', ()=> { if(chapterIndex<story.events.length-1) window.location.href = `chapter.html?story=${storySlug}&chapter=${chapterIndex+1}`; });
+
+} else {
+  document.getElementById('chapter-title').textContent = 'Chapter not found';
+}
+});
+</script>
+
+</body>
+</html>
