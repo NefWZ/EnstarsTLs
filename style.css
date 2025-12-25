@@ -61,6 +61,65 @@ h1 { text-align: center; margin-bottom: 20px; color: #4b4b4b; }
 .story-meta { font-size:0.85em; color:#666; margin-bottom:5px; display:flex; align-items:center; flex-wrap:wrap; gap:5px; }
 .character-icon { width:30px; height:30px; border-radius:50%; object-fit:cover; }
 
+/* Dialogue box */
+.dialogue-box {
+  display: flex;
+  align-items: flex-start;
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.dialogue-character {
+  width: 80px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.dialogue-character img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.dialogue-text {
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+/* Narration box */
+.narration-box {
+  background: #e6e6e6;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+/* Chapter Meta Images */
+#chapter-meta img.character-icon {
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+/* Buttons */
+button {
+  padding: 6px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Collapsible scene list */
 .scene-list { display:none; margin-top:10px; }
 .scene-title { cursor:pointer; font-weight:bold; margin:5px 0; }
