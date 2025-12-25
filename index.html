@@ -39,18 +39,76 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-const stories = [
-  {id:'s1', title:'Main Story Chapter 1', category:'Main', date:'2025-01-01', characters:['char1','char2'], slug:'story1'},
-  {id:'s2', title:'Valentine Event', category:'Event', date:'2025-02-14', characters:['char2','char3'], slug:'story2'},
-  {id:'s3', title:'Scout Story: Training', category:'Scout', date:'2025-03-05', characters:['char1'], slug:'story3'},
-  {id:'s4', title:'Unit Story: Tricksters', category:'Unit', date:'2025-04-10', characters:['char3','char2'], slug:'story4'}
-];
+const storiesData = {
+  story1: {
+    title: 'Main Story Chapter 1',          // Story title
+    category: 'Main',                        // Main / Event / Scout / Unit
+    date: '2025-01-01',                      // Release date
+    author: 'Author A',                       // Author name
+    translator: 'Translator X',              // Translator name
+    description: 'This is the overview description of the Main Story.',  // Story overview
+    characters: ['char1','char2'],           // Character IDs from characterData
+    events: [
+      {
+        title: 'Chapter 1: Beginning',       // Chapter title
+        text: 'Translation text for chapter 1', // Translation text
+        img: 'https://via.placeholder.com/400x200' // Optional image URL
+      },
+      {
+        title: 'Chapter 2: Middle',
+        text: 'Translation text for chapter 2'
+      },
+      {
+        title: 'Chapter 3: Ending',
+        text: 'Translation text for chapter 3',
+        img: 'https://via.placeholder.com/400x200'
+      }
+    ]
+  },
+
+  story2: {
+    title: 'Valentine Event',
+    category: 'Event',
+    date: '2025-02-14',
+    author: 'Author B',
+    translator: 'Translator Y',
+    description: 'Overview of Valentine Event.',
+    characters: ['char2','char3'],
+    events: [
+      { title: 'Scene 1', text: 'Valentine story translation.' },
+      { title: 'Scene 2', text: 'Second scene with image.', img: 'https://via.placeholder.com/400x200' }
+    ]
+  }
+
+  // Add more stories here...
+};
+
 
 const characterData = {
-  'char1':{name:'Character 1', img:'https://via.placeholder.com/50'},
-  'char2':{name:'Character 2', img:'https://via.placeholder.com/50'},
-  'char3':{name:'Character 3', img:'https://via.placeholder.com/50'}
+  char1: {
+    name: 'Character 1',                     // Display name
+    unit: 'Trickster',                       // Their unit (optional)
+    img: 'https://via.placeholder.com/50',  // Profile image
+    thumbnail: 'https://via.placeholder.com/30' // Optional smaller icon
+  },
+
+  char2: {
+    name: 'Character 2',
+    unit: 'Scouting Team',
+    img: 'https://via.placeholder.com/50',
+    thumbnail: 'https://via.placeholder.com/30'
+  },
+
+  char3: {
+    name: 'Character 3',
+    unit: 'Star Knights',
+    img: 'https://via.placeholder.com/50',
+    thumbnail: 'https://via.placeholder.com/30'
+  }
+
+  // Add more characters here...
 };
+
 
 const timeline = document.getElementById('timeline');
 const tabs = document.querySelectorAll('.tab');
