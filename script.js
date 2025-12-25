@@ -61,7 +61,7 @@ const characterData = {
     name: 'Eichi',                     // Display name
     unit: 'fine',                       // Their unit (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/eichi.png?raw=true',  // Profile image
-    thumbnail: 'https://via.placeholder.com/30', // Optional smaller icon
+    thumbnail: 'thumbnails/eichi.png', // Optional smaller icon
      hue: 320,        // Hue Angle
     color: '#FF6EC7' // Optional custom color
   },
