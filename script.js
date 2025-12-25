@@ -8,12 +8,12 @@ const storiesData = {
     author: 'Akira',                       // Author name
     translator: 'NefWZ',              // Translator name
     description: 'TO DO',  // Story overview
-    characters: ['char1','char2'],           // Character IDs from characterData
+    characters: ['EichiTenshouin','char2'],           // Character IDs from characterData
     events: [
       {
         title: 'Chapter 1: Beginning',       // Chapter title
         dialogue:[
-      { character: 'char1', text: 'Hey, are you ready for the festival?' },
+      { character: 'EichiTenshouin', text: 'Hey, are you ready for the festival?' },
       { character: 'char2', text: 'Yeah! I can’t wait to see everyone there.' },
       { character: null, text: 'The sun shone brightly over the academy courtyard.' },
       { character: 'char1', text: 'Let’s go then!' }
