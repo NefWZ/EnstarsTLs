@@ -40,48 +40,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 const stories = [
-  {
-    id:'s1',
-    title:'Main Story Chapter 1',
-    category:'Main',
-    date:'2025-01-01',
-    characters:['char1','char2'],
-    events:[
-      {title:'Scene 1', text:'Translation text for Scene 1', img:'https://via.placeholder.com/400x200'},
-      {title:'Scene 2', text:'Translation text for Scene 2'}
-    ]
-  },
-  {
-    id:'s2',
-    title:'Valentine Event',
-    category:'Event',
-    date:'2025-02-14',
-    characters:['char2','char3'],
-    events:[
-      {title:'Scene 1', text:'Valentine story translation.'},
-      {title:'Scene 2', text:'Second scene with image.', img:'https://via.placeholder.com/400x200'}
-    ]
-  },
-  {
-    id:'s3',
-    title:'Scout Story: Training',
-    category:'Scout',
-    date:'2025-03-05',
-    characters:['char1'],
-    events:[
-      {title:'Scene 1', text:'Scout story translation.'}
-    ]
-  },
-  {
-    id:'s4',
-    title:'Unit Story: Tricksters',
-    category:'Unit',
-    date:'2025-04-10',
-    characters:['char3','char2'],
-    events:[
-      {title:'Scene 1', text:'Unit story translation.'}
-    ]
-  }
+  {id:'s1', title:'Main Story Chapter 1', category:'Main', date:'2025-01-01', characters:['char1','char2'], slug:'story1'},
+  {id:'s2', title:'Valentine Event', category:'Event', date:'2025-02-14', characters:['char2','char3'], slug:'story2'},
+  {id:'s3', title:'Scout Story: Training', category:'Scout', date:'2025-03-05', characters:['char1'], slug:'story3'},
+  {id:'s4', title:'Unit Story: Tricksters', category:'Unit', date:'2025-04-10', characters:['char3','char2'], slug:'story4'}
 ];
 
 const characterData = {
@@ -115,27 +77,11 @@ function renderTimeline(category='All', searchText='', sortBy='release'){
       charIcons = story.characters.map(c => `<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
     }
 
-    // Scene list
-    const scenesHTML = story.events.map(ev => `
-      <div class="scene-title" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
-        ${ev.title}
-      </div>
-      <div class="scene-content">
-        <div>${ev.text}</div>
-        ${ev.img?`<img src="${ev.img}">`:''}
-      </div>
-    `).join('');
-
     card.innerHTML = `
       <div class="story-title">${story.title}</div>
       <div class="story-meta">${story.category} | ${story.date} | ${charIcons}</div>
-      <div class="scene-list">${scenesHTML}</div>
+      <div style="margin-top:5px;"><a href="story.html?slug=${story.slug}">View Story</a></div>
     `;
-
-    card.addEventListener('click', ()=>{
-      const list = card.querySelector('.scene-list');
-      list.style.display = list.style.display==='block'?'none':'block';
-    });
 
     timeline.appendChild(card);
   });
