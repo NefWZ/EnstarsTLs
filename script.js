@@ -107,9 +107,18 @@ function renderTimeline(category='All', searchText='', sortBy='release'){
     card.className='story-card ' + (index%2===0?'story-left':'story-right');
 
     let charIcons = '';
-    if(story.characters){
-      charIcons = story.characters.map(c => `<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
-    }
+    if (story.characters) {
+  charIcons = story.characters.map(c => {
+    const char = characterData[c];
+    if (!char) return '';
+    const iconSrc = char.thumbnail || char.img;
+    return `<img class="character-icon"
+                src="${iconSrc}"
+                title="${char.name}"
+                alt="${char.name}">`;
+  }).join('');
+}
+
 
     card.innerHTML = `
       <div class="story-title">${story.title}</div>
