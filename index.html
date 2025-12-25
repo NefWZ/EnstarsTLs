@@ -51,16 +51,21 @@ const storiesData = {
     events: [
       {
         title: 'Chapter 1: Beginning',       // Chapter title
-        text: 'Translation text for chapter 1', // Translation text
+        dialogue:[
+      { character: 'char1', text: 'Hey, are you ready for the festival?' },
+      { character: 'char2', text: 'Yeah! I can’t wait to see everyone there.' },
+      { character: null, text: 'The sun shone brightly over the academy courtyard.' },
+      { character: 'char1', text: 'Let’s go then!' }
+    ] // Translation text
         img: 'https://via.placeholder.com/400x200' // Optional image URL
       },
       {
         title: 'Chapter 2: Middle',
-        text: 'Translation text for chapter 2'
+        dialogue: 'Translation text for chapter 2'
       },
       {
         title: 'Chapter 3: Ending',
-        text: 'Translation text for chapter 3',
+        dialogue: 'Translation text for chapter 3',
         img: 'https://via.placeholder.com/400x200'
       }
     ]
@@ -75,8 +80,8 @@ const storiesData = {
     description: 'Overview of Valentine Event.',
     characters: ['char2','char3'],
     events: [
-      { title: 'Scene 1', text: 'Valentine story translation.' },
-      { title: 'Scene 2', text: 'Second scene with image.', img: 'https://via.placeholder.com/400x200' }
+      { title: 'Scene 1', dialogue: 'Valentine story translation.' },
+      { title: 'Scene 2', dialogue: 'Second scene with image.' }
     ]
   }
 
