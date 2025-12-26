@@ -19,54 +19,8 @@
   <a href="../index.html">Back to Timeline</a>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-const storiesData = {
-  story1: { title:'Main Story Chapter 1', category:'Main', date:'2025-01-01', author:'Author A', translator:'Translator X',
-            description:'This is the overview description of the Main Story.', characters:['char1','char2'],
-            events:[
-              {title:'Chapter 1: Beginning'},
-              {title:'Chapter 2: Middle'},
-              {title:'Chapter 3: Ending'}
-            ]
-  },
-  story2: { title:'Valentine Event', category:'Event', date:'2025-02-14', author:'Author B', translator:'Translator Y',
-            description:'Overview of Valentine Event.', characters:['char2','char3'],
-            events:[
-              {title:'Scene 1'},
-              {title:'Scene 2'}
-            ]
-  }
-};
-
-const characterData = {
-  'char1':{name:'Character 1', img:'https://via.placeholder.com/50'},
-  'char2':{name:'Character 2', img:'https://via.placeholder.com/50'},
-  'char3':{name:'Character 3', img:'https://via.placeholder.com/50'}
-};
-
-const urlParams = new URLSearchParams(window.location.search);
-const slug = urlParams.get('slug');
-const story = storiesData[slug];
-
-if(story){
-  document.getElementById('story-title').textContent = story.title;
-  let charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
-  document.getElementById('story-meta').innerHTML = `
-    ${story.category} | ${story.date} | Author: ${story.author} | Translator: ${story.translator} | ${charIcons}
-  `;
-  document.getElementById('story-desc').textContent = story.description;
-
-  const chapterList = document.getElementById('chapter-list');
-  story.events.forEach((chapter,i)=>{
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="chapter.html?story=${slug}&chapter=${i}">${chapter.title}</a>`;
-    chapterList.appendChild(li);
-  });
-} else {
-  document.getElementById('story-title').textContent = 'Story not found';
-}
-});
-</script>
+<script src="characters.js" defer></script>
+<script src="script.js" defer></script>
+  
 </body>
 </html>
