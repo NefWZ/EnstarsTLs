@@ -66,11 +66,13 @@ const characterData = {
     color: '#FFF3B8' // Optional custom color
   },
 
-  char2: {
-    name: 'Character 2',
-    unit: 'Scouting Team',
-    img: 'https://via.placeholder.com/50',
-    thumbnail: 'https://via.placeholder.com/30'
+ WataruHibiki: {
+    name: 'Wataru',                     // Display name
+    unit: 'fine',                       // Their unit (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#A1D8E2' // Optional custom color
   },
 
   char3: {
