@@ -131,3 +131,37 @@ button:disabled {
   .story-card::before { left:-8px !important; }
   .search-container input{ width:180px; }
 }
+
+/* Filter */
+.filters {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.filters.collapsed {
+  display: none;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eee;
+  cursor: pointer;
+  font-size: 0.85em;
+  user-select: none;
+}
+
+.tag.active {
+  background: #7ec3ff;
+  color: white;
+}
+
