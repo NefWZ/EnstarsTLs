@@ -56,11 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   };
 
-  const characterData = {
-    EichiTenshouin: { name: 'Eichi Tenshouin', unit: 'Trickster', img: 'https://via.placeholder.com/50', thumbnail: 'https://via.placeholder.com/30' },
-    WataruHibiki: { name: 'Wataru Hibiki', unit: 'Scouting Team', img: 'https://via.placeholder.com/50', thumbnail: 'https://via.placeholder.com/30' },
-    char3: { name: 'Character 3', unit: 'Star Knights', img: 'https://via.placeholder.com/50', thumbnail: 'https://via.placeholder.com/30' }
-  };
+ 
 
  
   // FILTER STATE
