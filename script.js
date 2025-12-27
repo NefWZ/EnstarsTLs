@@ -84,11 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (activeFilters.units.size) {
-      const storyUnits = (story.characters || [])
-        .map(c => characterData[c]?.unit)
-        .filter(Boolean);
-      if (![...activeFilters.units].every(u => storyUnits.includes(u))) return false;
-    }
+  const storyUnits = (story.characters || [])
+    .map(c => characterData[c]?.units)  // note plural
+    .filter(Boolean)
+    .flat(); // flatten array of arrays
+  if (![...activeFilters.units].every(u => storyUnits.includes(u))) return false;
+}
 
     if (activeFilters.authors.size && !activeFilters.authors.has(story.author)) return false;
 
@@ -107,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const char = characterData[id];
         return (
           char?.name.toLowerCase().includes(q) ||
-          char?.unit?.toLowerCase().includes(q)
+          char?.units?.toLowerCase().includes(q)
         );
       });
     }
@@ -198,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const char = characterData[c];
           if (char) {
             chars.set(c, char.name);
-            if (char.unit) units.add(char.unit);
+            if (char.units) char.units.forEach(u => units.add(u));
           }
         });
       }
