@@ -17,9 +17,9 @@ const characterData = {
     color: '#A1D8E2' // Optional custom color
   },
 
-  char3: {
-    name: 'Character 3',
-    unit: 'Star Knights',
+  ToriHimemiya: {
+    name: 'Tori',
+    unit: 'fine',
     img: 'https://via.placeholder.com/50',
     thumbnail: 'https://via.placeholder.com/30'
   }
