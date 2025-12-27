@@ -235,7 +235,6 @@ sortSelect.addEventListener('change',()=>{
 
 
 // Initial render
-refreshTimeline();
 
 console.log('storiesData keys:', Object.keys(storiesData));
 console.log('characterData keys:', Object.keys(characterData));
