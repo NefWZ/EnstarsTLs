@@ -43,13 +43,31 @@ const timeline = document.getElementById('timeline');
 const tabs = document.querySelectorAll('.tab');
 const searchInput = document.getElementById('search');
 const sortSelect = document.getElementById('sort');
+  
+function storyMatchesSearch(story, searchText) {
+  if (!searchText) return true;
+  const q = searchText.toLowerCase();
+
+  // Title match
+  if (story.title.toLowerCase().includes(q)) return true;
+
+  // Character name match
+  if (story.characters && Array.isArray(story.characters)) {
+    return story.characters.some(charId => {
+      const char = characterData[charId];
+      return char && char.name.toLowerCase().includes(q);
+    });
+  }
+
+  return false;
+}
 
 function renderTimeline(category='All', searchText='', sortBy='release'){
   timeline.innerHTML='';
   let filtered = Object.keys(storiesData)
     .map(slug => ({slug, ...storiesData[slug]}))
-    .filter(s => (category==='All'||s.category===category) &&
-                 s.title.toLowerCase().includes(searchText.toLowerCase()));
+   .filter(s => (category === 'All' || s.category === category) &&
+             storyMatchesSearch(s, searchText));
 
   if(sortBy==='chronological'){
     filtered.sort((a,b)=> new Date(a.date)-new Date(b.date));
