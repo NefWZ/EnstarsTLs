@@ -36,24 +36,7 @@ const storiesData = {
 };
 
 
-if(story){
-story-title
-  document.getElementById('story-title').textContent = story.title;
-  let charIcons = story.characters.map(c=>`<img class="character-icon" src="${characterData[c].img}" title="${characterData[c].name}">`).join('');
-  document.getElementById('story-meta').innerHTML = `
-    ${story.category} | ${story.date} | Author: ${story.author} | Translator: ${story.translator} | ${charIcons}
-  `;
-  document.getElementById('story-desc').textContent = story.description;
 
-  const chapterList = document.getElementById('chapter-list');
-  story.events.forEach((chapter,i)=>{
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="chapter.html?story=${slug}&chapter=${i}">${chapter.title}</a>`;
-    chapterList.appendChild(li);
-  });
-} else {
-  document.getElementById('story-title').textContent = 'Story not found';
-}
 
 
 const timeline = document.getElementById('timeline');
