@@ -38,66 +38,8 @@ const storiesData = {
   },
 };
 
-// Tags and filters
-const activeFilters = {
-  characters: new Set(),
-  units: new Set(),
-  authors: new Set()
-};
 
-function buildFilterTags() {
-  const chars = new Map();
-  const units = new Set();
-  const authors = new Set();
 
-  Object.values(storiesData).forEach(story => {
-    if (story.characters) {
-      story.characters.forEach(c => {
-        const char = characterData[c];
-        if (char) {
-          chars.set(c, char.name);
-          if (char.unit) units.add(char.unit);
-        }
-      });
-    }
-    if (story.author) authors.add(story.author);
-  });
-
-  populateTags('character-tags', chars, 'characters');
-  populateTags('unit-tags', units, 'units');
-  populateTags('author-tags', authors, 'authors');
-}
-
-function populateTags(containerId, items, type) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = '';
-
-  if (items instanceof Map) {
-    items.forEach((label, id) => createTag(container, label, id, type));
-  } else {
-    items.forEach(label => createTag(container, label, label, type));
-  }
-}
-
-function createTag(container, label, value, type) {
-  const tag = document.createElement('div');
-  tag.className = 'tag';
-  tag.textContent = label;
-
-  tag.addEventListener('click', () => {
-    tag.classList.toggle('active');
-
-    if (activeFilters[type].has(value)) {
-      activeFilters[type].delete(value);
-    } else {
-      activeFilters[type].add(value);
-    }
-
-    refreshTimeline();
-  });
-
-  container.appendChild(tag);
-}
 
 
 
@@ -153,6 +95,67 @@ function refreshTimeline() {
 
   return true;
 }
+  // Tags and filters
+const activeFilters = {
+  characters: new Set(),
+  units: new Set(),
+  authors: new Set()
+};
+function createTag(container, label, value, type) {
+  const tag = document.createElement('div');
+  tag.className = 'tag';
+  tag.textContent = label;
+
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('active');
+
+    if (activeFilters[type].has(value)) {
+      activeFilters[type].delete(value);
+    } else {
+      activeFilters[type].add(value);
+    }
+
+    refreshTimeline();
+  });
+
+  container.appendChild(tag);
+}
+  
+function populateTags(containerId, items, type) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+
+  if (items instanceof Map) {
+    items.forEach((label, id) => createTag(container, label, id, type));
+  } else {
+    items.forEach(label => createTag(container, label, label, type));
+  }
+}
+  
+function buildFilterTags() {
+  const chars = new Map();
+  const units = new Set();
+  const authors = new Set();
+
+  Object.values(storiesData).forEach(story => {
+    if (story.characters) {
+      story.characters.forEach(c => {
+        const char = characterData[c];
+        if (char) {
+          chars.set(c, char.name);
+          if (char.unit) units.add(char.unit);
+        }
+      });
+    }
+    if (story.author) authors.add(story.author);
+  });
+
+  populateTags('character-tags', chars, 'characters');
+  populateTags('unit-tags', units, 'units');
+  populateTags('author-tags', authors, 'authors');
+}
+
+
 function storyMatchesSearch(story, q) {
   if (!q) return true;
   q = q.toLowerCase();
