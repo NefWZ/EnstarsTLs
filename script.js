@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('toggle-filters').addEventListener('click', () => {
+  document.getElementById('filters').classList.toggle('collapsed');
+});
 
 const storiesData = {
   story1: {
@@ -35,7 +38,66 @@ const storiesData = {
   },
 };
 
+// Tags and filters
+const activeFilters = {
+  characters: new Set(),
+  units: new Set(),
+  authors: new Set()
+};
 
+function buildFilterTags() {
+  const chars = new Map();
+  const units = new Set();
+  const authors = new Set();
+
+  Object.values(storiesData).forEach(story => {
+    if (story.characters) {
+      story.characters.forEach(c => {
+        const char = characterData[c];
+        if (char) {
+          chars.set(c, char.name);
+          if (char.unit) units.add(char.unit);
+        }
+      });
+    }
+    if (story.author) authors.add(story.author);
+  });
+
+  populateTags('character-tags', chars, 'characters');
+  populateTags('unit-tags', units, 'units');
+  populateTags('author-tags', authors, 'authors');
+}
+
+function populateTags(containerId, items, type) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+
+  if (items instanceof Map) {
+    items.forEach((label, id) => createTag(container, label, id, type));
+  } else {
+    items.forEach(label => createTag(container, label, label, type));
+  }
+}
+
+function createTag(container, label, value, type) {
+  const tag = document.createElement('div');
+  tag.className = 'tag';
+  tag.textContent = label;
+
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('active');
+
+    if (activeFilters[type].has(value)) {
+      activeFilters[type].delete(value);
+    } else {
+      activeFilters[type].add(value);
+    }
+
+    refreshTimeline();
+  });
+
+  container.appendChild(tag);
+}
 
 
 
@@ -66,8 +128,51 @@ function renderTimeline(category='All', searchText='', sortBy='release'){
   timeline.innerHTML='';
   let filtered = Object.keys(storiesData)
     .map(slug => ({slug, ...storiesData[slug]}))
-   .filter(s => (category === 'All' || s.category === category) &&
-             storyMatchesSearch(s, searchText));
+  .filter(story => storyMatchesFilters(story) && storyMatchesSearch(story, searchText));
+  
+function storyMatchesFilters(story) {
+  if (activeFilters.characters.size) {
+    if (!story.characters || ![...activeFilters.characters].every(c => story.characters.includes(c))) {
+      return false;
+    }
+  }
+function refreshTimeline() {
+  const activeCategory = document.querySelector('.tab.active')?.dataset.category || 'All';
+  renderTimeline(activeCategory, searchInput.value, sortSelect.value);
+}
+
+  if (activeFilters.units.size) {
+    const storyUnits = (story.characters || [])
+      .map(c => characterData[c]?.unit)
+      .filter(Boolean);
+
+    if (![...activeFilters.units].every(u => storyUnits.includes(u))) return false;
+  }
+
+  if (activeFilters.authors.size && !activeFilters.authors.has(story.author)) return false;
+
+  return true;
+}
+function storyMatchesSearch(story, q) {
+  if (!q) return true;
+  q = q.toLowerCase();
+
+  if (story.title.toLowerCase().includes(q)) return true;
+  if (story.author?.toLowerCase().includes(q)) return true;
+
+  if (story.characters) {
+    return story.characters.some(id => {
+      const char = characterData[id];
+      return (
+        char?.name.toLowerCase().includes(q) ||
+        char?.unit?.toLowerCase().includes(q)
+      );
+    });
+  }
+
+  return false;
+}
+
 
   if(sortBy==='chronological'){
     filtered.sort((a,b)=> new Date(a.date)-new Date(b.date));
@@ -109,23 +214,27 @@ tabs.forEach(tab=>{
   tab.addEventListener('click',()=>{
     tabs.forEach(t=>t.classList.remove('active'));
     tab.classList.add('active');
-    renderTimeline(tab.dataset.category, searchInput.value, sortSelect.value);
+    refreshTimeline();
   });
 });
 
+
 // Search
 searchInput.addEventListener('input',()=>{
-  const activeCategory = document.querySelector('.tab.active').dataset.category;
-  renderTimeline(activeCategory, searchInput.value, sortSelect.value);
+  refreshTimeline();
 });
+
 
 // Sort
 sortSelect.addEventListener('change',()=>{
-  const activeCategory = document.querySelector('.tab.active').dataset.category;
-  renderTimeline(activeCategory, searchInput.value, sortSelect.value);
+  refreshTimeline();
 });
 
+
 // Initial render
-renderTimeline('All', '', sortSelect.value || 'release');
+refreshTimeline();
+  
+buildFilterTags();
+refreshTimeline();
 
 });
