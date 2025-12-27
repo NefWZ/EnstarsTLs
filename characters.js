@@ -1,7 +1,7 @@
 const characterData = {
   EichiTenshouin: {
     name: 'Eichi',                     // Display name
-    unit: 'fine',                       // Their unit (optional)
+    units: ['fine'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/eichi.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/eichi.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -10,7 +10,7 @@ const characterData = {
 
  WataruHibiki: {
     name: 'Wataru',                     // Display name
-    unit: 'fine',                       // Their unit (optional)
+    units: ['fine'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -19,7 +19,7 @@ const characterData = {
 
   ToriHimemiya: {
     name: 'Tori',                     // Display name
-    unit: 'fine',                       // Their unit (optional)
+    units: ['fine'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -28,7 +28,7 @@ const characterData = {
 
   YuzuruFushimi: {
     name: 'Yuzuru',                     // Display name
-    unit: 'fine',                       // Their unit (optional)
+    units: ['fine'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -38,7 +38,7 @@ const characterData = {
   
   HokutoHidaka: {
     name: 'Hokuto',                     // Display name
-    unit: 'Trickstar',                       // Their unit (optional)
+    units: ['Trickstar'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -47,7 +47,7 @@ const characterData = {
 
   SubaruAkehoshi: {
     name: 'Subaru',                     // Display name
-    unit: 'Trickstar',                       // Their unit (optional)
+    units: ['Trickstar'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -56,7 +56,7 @@ const characterData = {
 
   MakotoYuuki: {
     name: 'Makoto',                     // Display name
-    unit: 'Trickstar',                       // Their unit (optional)
+    units: ['Trickstar'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -65,7 +65,7 @@ const characterData = {
 
   MaoIsara: {
     name: 'Mao',                     // Display name
-    unit: 'Trickstar',                       // Their unit (optional)
+    units: ['Trickstar'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -74,7 +74,7 @@ const characterData = {
 
   TetoraNagumo: {
     name: 'Tetora',                     // Display name
-    unit: 'RYUSEITAI',                       // Their unit (optional)
+    units: ['RYUSEITAI'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -83,7 +83,7 @@ const characterData = {
 
   MidoriTakamine: {
     name: 'Midori',                     // Display name
-    unit: 'RYUSEITAI',                       // Their unit (optional)
+    units: ['RYUSEITAI'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -92,7 +92,7 @@ const characterData = {
 
   ShinobuSengoku: {
     name: 'Shinobu',                     // Display name
-    unit: 'RYUSEITAI',                       // Their unit (optional)
+    units: ['RYUSEITAI'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -101,7 +101,7 @@ const characterData = {
 
   ChiakiMorisawa: {
     name: 'Chiaki',                     // Display name
-    unit: 'RYUSEITAI',                       // Their unit (optional)
+    units: ['RYUSEITAI'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -110,7 +110,7 @@ const characterData = {
 
   KanataShinkai: {
     name: 'Kanata',                     // Display name
-    unit: 'RYUSEITAI',                       // Their unit (optional)
+    units: ['RYUSEITAI'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -119,7 +119,7 @@ const characterData = {
 
   HiiroAmagi: {
     name: 'Hiiro',                     // Display name
-    unit: 'ALKALOID',                       // Their unit (optional)
+    units: ['ALKALOID'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -128,7 +128,7 @@ const characterData = {
 
   AiraShiratori: {
     name: 'Aira',                     // Display name
-    unit: 'ALKALOID',                       // Their unit (optional)
+    units: ['ALKALOID'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -137,7 +137,7 @@ const characterData = {
 
   MayoiAyase: {
     name: 'Mayoi',                     // Display name
-    unit: 'ALKALOID',                       // Their unit (optional)
+    units: ['ALKALOID'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
@@ -146,11 +146,20 @@ const characterData = {
 
   TatsumiKazehaya: {
     name: 'Tatsumi',                     // Display name
-    unit: 'ALKALOID',                       // Their unit (optional)
+    units: ['ALKALOID'],                       // Their units (optional)
     img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
     thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
      hue: 49.86,        // Hue Angle
     color: '#7EBEA5' // Optional custom color
+  },
+
+  NagisaRan: {
+    name: 'Nagisa',                     // Display name
+    units: ['Eden', 'Adam'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#A73836' // Optional custom color
   },
   // Add more characters here...
 };
