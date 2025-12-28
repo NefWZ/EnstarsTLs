@@ -122,9 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTimeline(category='All', searchText='', sortBy='release') {
     timeline.innerHTML = '';
 
-    const filtered = Object.keys(storiesData)
-      .map(slug => ({slug, ...storiesData[slug]}))
-      .filter(story => storyMatchesFilters(story) && storyMatchesSearch(story, searchText));
+const filtered = Object.keys(storiesData)
+  .map(slug => ({slug, ...storiesData[slug]}))
+  .filter(story =>
+    (category === 'All' || story.category === category) &&
+    storyMatchesFilters(story) &&
+    storyMatchesSearch(story, searchText)
+  );
 
     if(sortBy === 'chronological'){
       filtered.sort((a,b) => new Date(a.date) - new Date(b.date));
