@@ -332,5 +332,185 @@ const characterData = {
      hue: 49.86,        // Hue Angle
     color: '#CAB8D9' // Optional custom color
   },
+
+  KeitoHasumi: {
+    name: 'Keito',                     // Display name
+    units: ['AKATSUKI'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#316745' // Optional custom color
+  },
+
+  KuroKiryu: {
+    name: 'Kuro',                     // Display name
+    units: ['AKATSUKI'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#E83929' // Optional custom color
+  },
+
+  SoumaKanzaki: {
+    name: 'Souma',                     // Display name
+    units: ['AKATSUKI'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#5654A2' // Optional custom color
+  },
+
+  TsukasaSuou: {
+    name: 'Tsukasa',                     // Display name
+    units: ['Knights'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#942343' // Optional custom color
+  },
+
+  LeoTsukinaga: {
+    name: 'Leo',                     // Display name
+    units: ['Knights'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#EC6D51' // Optional custom color
+  },
+
+  IzumiSena: {
+    name: 'Izumi',                     // Display name
+    units: ['Knights'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#BBDBF3' // Optional custom color
+  },
+
+  RitsuSakuma: {
+    name: 'Ritsu',                     // Display name
+    units: ['Knights'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#001E43' // Optional custom color
+  },
+
+  ArashiNarukami: {
+    name: 'Arashi',                     // Display name
+    units: ['Knights'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#EDDE7B' // Optional custom color
+  },
+
+  NatsumeSakasaki: {
+    name: 'Natsume',                     // Display name
+    units: ['Switch'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#D70035' // Optional custom color
+  },
+
+  TsumugiAoba: {
+    name: 'Tsumugi',                     // Display name
+    units: ['Switch'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#00608D' // Optional custom color
+  },
+
+  SoraHarukawa: {
+    name: 'Sora',                     // Display name
+    units: ['Switch'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#FFF352' // Optional custom color
+  },
+
+  MadaraMikejima: {
+    name: 'Madara',                     // Display name
+    units: ['MaM'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#622D18' // Optional custom color
+  },
+
+  EsuSagiri: {
+    name: 'Esu',                     // Display name
+    units: ['Special for Princess!'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#80FFF4' // Optional custom color
+  },
+  
+  KannaNatsu: {
+    name: 'Kanna',                     // Display name
+    units: ['Special for Princess!'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#BACCB8' // Optional custom color
+  },
+
+  FuyumeHanamura: {
+    name: 'Yume',                     // Display name
+    units: ['Special for Princess!'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#CCADD9' // Optional custom color
+  },
+
+  RaikoHojo: {
+    name: 'Raika',                     // Display name
+    units: ['Special for Princess!'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#298C7C' // Optional custom color
+  },
+
+  JuisKojika: {
+    name: 'Juis',                     // Display name
+    units: ['MELLOW DEAR US'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#52CC53' // Optional custom color
+  },
+
+  NozomiMadoka: {
+    name: 'Nozomi',                     // Display name
+    units: ['MELLOW DEAR US'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#981558' // Optional custom color
+  },
+
+  MashuKuon: {
+    name: 'Mashu',                     // Display name
+    units: ['MELLOW DEAR US'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#F37A89' // Optional custom color
+  },
+
+  ChitoseTsuzura: {
+    name: 'Chitose',                     // Display name
+    units: ['MELLOW DEAR US'],                       // Their units (optional)
+    img: 'https://github.com/NefWZ/img/blob/main/headshots/wataru.png?raw=true',  // Profile image
+    thumbnail: 'https://github.com/NefWZ/img/blob/main/thumbnails/wataru.png?raw=true', // Optional smaller icon
+     hue: 49.86,        // Hue Angle
+    color: '#304780' // Optional custom color
+  },
   // Add more characters here...
 };
