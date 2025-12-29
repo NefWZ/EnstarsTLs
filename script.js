@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       author: 'Akira',          // Author name
       translator: 'NefWZ',      // Translator name
       description: 'TO DO',     // Story overview
-      characters: ['EichiTenshouin','char2'], // Character IDs from characterData
+      characters: ['TsukasaSuou','IzumiSena', 'ArashiNarukami', 'RitsuSakuma'], // Character IDs from characterData
       events: [
         {
           title: 'Chapter 1: Beginning', // Chapter title
