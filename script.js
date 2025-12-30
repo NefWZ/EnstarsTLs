@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Sweets',          // Story title
       category: 'Scout',        // Main / Event / Scout / Unit
       date: '2015-05-31',       // Release date
+      chron: 14,
       author: 'Akira',          // Author name
       translator: 'NefWZ',      // Translator name
       description: 'TO DO',     // Story overview
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Placeholder Event',
       category: 'Event',
       date: '2025-02-14',
+      chronOrder: 1,
       author: 'Author B',
       translator: 'NefWZ',
       description: 'Overview of Placeholder Event.',
@@ -130,9 +132,18 @@ const filtered = Object.keys(storiesData)
     storyMatchesSearch(story, searchText)
   );
 
- if (sortBy === 'release' || sortBy === 'chronological') {
-  // Oldest to Newest
+if (sortBy === 'release') {
+  // Oldest to Newest (release date)
   filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+} 
+else if (sortBy === 'chronological') {
+  // In-game story order
+  filtered.sort((a, b) => {
+    if (a.chronOrder == null && b.chronOrder == null) return 0;
+    if (a.chronOrder == null) return 1;
+    if (b.chronOrder == null) return -1;
+    return a.chronOrder - b.chronOrder;
+  });
 }
     filtered.forEach((story,index) => {
       let charIcons = '';
