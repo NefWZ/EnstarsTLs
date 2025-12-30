@@ -152,7 +152,7 @@ const filtered = Object.keys(storiesData)
       card.innerHTML = `
         <div class="story-title">${story.title}</div>
         <div class="story-meta">${story.category} | ${story.date} | ${charIcons}</div>
-        <div style="margin-top:5px;"><a href="pages/story.html?slug=${story.slug}">View Story</a></div>
+        <div style="margin-top:5px;"><a href="/story.html?slug=${story.slug}">View Story</a></div>
       `;
       timeline.appendChild(card);
     });
