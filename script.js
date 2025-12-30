@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
   // TIMELINE RENDER
  
-  function renderTimeline(category='All', searchText='', sortBy='date') {
+  function renderTimeline(category='All', searchText='', sortBy='release') {
     timeline.innerHTML = '';
 
 const filtered = Object.keys(storiesData)
