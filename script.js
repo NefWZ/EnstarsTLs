@@ -130,12 +130,10 @@ const filtered = Object.keys(storiesData)
     storyMatchesSearch(story, searchText)
   );
 
-    if(sortBy === 'chronological'){
-      filtered.sort((a,b) => new Date(a.date) - new Date(b.date));
-    } else {
-      filtered.sort((a,b) => a.slug.localeCompare(b.slug));
-    }
-
+ if (sortBy === 'release' || sortBy === 'chronological') {
+  // Oldest to Newest
+  filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+}
     filtered.forEach((story,index) => {
       let charIcons = '';
       if (story.characters) {
