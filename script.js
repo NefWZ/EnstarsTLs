@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // DATA
  
   const storiesData = {
-    story1: {
+    sweets: {
       title: 'Sweets',          // Story title
       category: 'Scout',        // Main / Event / Scout / Unit
       date: '2015-05-31',       // Release date
